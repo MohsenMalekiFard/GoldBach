@@ -14,12 +14,20 @@ def goldbach_pair_exists(even_num):
     return None
 
 def test_goldbach(limit):
+    exceptions = []
     for even in range(4, limit + 1, 2):
         pair = goldbach_pair_exists(even)
         if pair:
             print(f"{even} = {pair[0]} + {pair[1]}  → True")
         else:
-            print(f"❌ {even} has no valid prime pair! (Potential counterexample)")
+            print(f"{even} → ❌ هیچ جفت عدد اولی پیدا نشد!")
+            exceptions.append(even)
+
+    print("\n---------------------------")
+    if not exceptions:
+        print("✅ همه اعداد زوج بررسی‌شده با حدس گلدباخ سازگار بودند.")
+    else:
+        print(f"❌ استثنا پیدا شد! این اعداد برخلاف حدس بودند: {exceptions}")
 
 # ============================
 # 👇 اجرای برنامه
